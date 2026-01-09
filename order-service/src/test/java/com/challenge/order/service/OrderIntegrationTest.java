@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -17,6 +18,7 @@ import org.springframework.boot.web.reactive.context.ReactiveWebServerApplicatio
 import java.util.List;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureWebTestClient
 class OrderIntegrationTest {
 
     static ConfigurableApplicationContext productCtx;
@@ -60,4 +62,3 @@ class OrderIntegrationTest {
                 .jsonPath("$.items[0].productId").isEqualTo(1);
     }
 }
-
